@@ -19,10 +19,10 @@ async def root():
     return {"message": "Running api"}
 
 @app.post("/predict")
-async def predict(data: list):
+async def predict(data: dict):
 
     model = load('modelo.joblib')
-    result = [model.predict([data])]
+    result = [model.predict([data.data])]
 
     return {"result": str(result[0][0][0])} 
     
